@@ -1,7 +1,13 @@
-function sum(a, b) {
-    return a + b;
-}
+import App from '../src/components/App'
+import { shallow, configure } from 'enzyme'
+import React from 'react'
+import Adapter from 'enzyme-adapter-react-16'
+configure({ adapter: new Adapter() })
 
-test('adds 1 + 2 equal to 3', () => {
-    expect(sum(1, 2)).toBe(3);
+describe('App component', () => {
+    test('should shallow correctly', () => {
+        expect(shallow(
+            <App />
+        )).toMatchSnapshot()
+    })
 })
